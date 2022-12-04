@@ -1,0 +1,16 @@
+
+
+<form [formGroup]="userData" class="formulario">
+    <span class="p-float-label datos mt-4">
+        <input id="float-input" type="text" pInputText formControlName="username"> 
+        <label for="float-input">Username</label>
+    </span>
+    <span class="p-float-label datos mt-4">
+        <input id="float-input" type="text" pInputText formControlName="password">
+        <label for="float-input">Password</label>
+    </span>
+    <button pButton type="button" label="Iniciar Sesión" class="button mt-4" (click)="logIn()"></button>
+</form>
+
+
+
