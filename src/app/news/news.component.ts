@@ -100,7 +100,7 @@ export class NewsComponent implements OnInit {
     }else{
       if(id=='female'){
         if(this.colorFemale=='primary'){
-          return ((this.colorFemale='danger')&&(this.titleFemale='Mostrar Productos Masculinos')&&(this.female=false))
+          return ((this.colorFemale='danger')&&(this.titleFemale='Mostrar Productos Femeninos')&&(this.female=false))
         }else{
           return ((this.colorFemale='primary')&&(this.titleFemale='Ocultar Productos Femeninos')&&(this.female=true))
         }

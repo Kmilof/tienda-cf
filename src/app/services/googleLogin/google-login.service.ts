@@ -47,6 +47,13 @@ export class GoogleLoginService {
     )
   }
 
+  isLoged(){
+    if(this.cookie.get('idToken')==='true'){
+      this.loged=true
+    }
+    return this.loged
+  }
+
   logOut(){
     this.auth.signOut().then(
       ()=>{
@@ -54,6 +61,8 @@ export class GoogleLoginService {
         alert('Cerro Sesion')
       }
     )
+    this.loged=false
+    return this.loged
   }
 
 }

@@ -18,9 +18,8 @@ import { CardProductComponent } from './card-product/card-product.component';
 
 import {CarouselModule} from 'primeng/carousel';
 import { HttpClientModule } from '@angular/common/http';
-import {ToastModule} from 'primeng/toast';
+import { ToastModule} from 'primeng/toast';
 import { MenubarComponent } from './menubar/menubar.component';
-import { TitleH1Component } from './title-h1/title-h1.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { SkeletonComponent } from './layout/skeleton/skeleton.component';
@@ -44,7 +43,6 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     FooterComponent,
     CardProductComponent,
     MenubarComponent,
-    TitleH1Component,
     HomeComponent,
     NewsComponent,
     MaleComponent,
