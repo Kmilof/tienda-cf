@@ -1,74 +1,84 @@
+
+//NgModule
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
+//components
+import { AdminComponent } from './views/admin/admin.component';
 import { AppComponent } from './app.component';
+import { CardProductComponent } from './components/card-product/card-product.component';
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FemaleComponent } from './views/female/female.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { HomeComponent } from './views/home/home.component';
+import { KidsComponent } from './views/kids/kids.component';
+import { LoginComponent } from './views/login/login.component';
+import { MaleComponent } from './views/male/male.component';
+import { MenubarComponent } from './components/menubar/menubar.component';
+import { NavigationComponent } from './layout/navigation/navigation.component';
+import { NewsComponent } from './views/news/news.component';
+import { SkeletonComponent } from './layout/skeleton/skeleton.component';
 
+//modules
+import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
-
-import { DialogModule } from 'primeng/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { ButtonModule } from 'primeng/button';
+import { CarouselModule } from 'primeng/carousel';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { InputTextModule } from 'primeng/inputtext';
 import { MenubarModule } from 'primeng/menubar';
-import { AdminComponent } from './admin/admin.component';
-import { ButtonModule } from 'primeng/button';
-import { CardProductComponent } from './card-product/card-product.component';
-
-import {CarouselModule} from 'primeng/carousel';
-import { HttpClientModule } from '@angular/common/http';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ToastModule} from 'primeng/toast';
-import { MenubarComponent } from './menubar/menubar.component';
-import { NavigationComponent } from './layout/navigation/navigation.component';
-import { FooterComponent } from './layout/footer/footer.component';
-import { SkeletonComponent } from './layout/skeleton/skeleton.component';
-import { HomeComponent } from './home/home.component';
-import { NewsComponent } from './news/news.component';
-import { MaleComponent } from './male/male.component';
-import { FemaleComponent } from './female/female.component';
-import { KidsComponent } from './kids/kids.component';
-import { CarouselComponent } from './carousel/carousel.component';
-import { LoginComponent } from './login/login.component';
-import { CheckboxModule } from 'primeng/checkbox';
-import {RadioButtonModule} from 'primeng/radiobutton';
+
+//services
+import { GetProductsService } from './services/products/getProducts.service';
+import { StorageService } from './services/storage/storage.service';
+import { LoginService } from './services/login/login.service';
+import { GoogleLoginService } from './services/googleLogin/google-login.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
     AdminComponent,
-    NavigationComponent,
-    SkeletonComponent,
-    FooterComponent,
+    AppComponent,
     CardProductComponent,
-    MenubarComponent,
-    HomeComponent,
-    NewsComponent,
-    MaleComponent,
-    FemaleComponent,
-    KidsComponent,
     CarouselComponent,
-    LoginComponent
+    FemaleComponent,
+    FooterComponent,
+    HomeComponent,
+    KidsComponent,
+    LoginComponent,
+    MaleComponent,
+    MenubarComponent,
+    NavigationComponent,
+    NewsComponent,
+    SkeletonComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    DialogModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    InputTextModule,
-    MenubarModule,
+    BrowserModule,
     ButtonModule,
     CarouselModule,
-    HttpClientModule,
-    FormsModule,
-    ToastModule,
     CheckboxModule,
-    RadioButtonModule
+    DialogModule,
+    FormsModule,
+    HttpClientModule,
+    InputTextModule,
+    MenubarModule,
+    RadioButtonModule,
+    ReactiveFormsModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [GetProductsService,GoogleLoginService,LoginService,StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

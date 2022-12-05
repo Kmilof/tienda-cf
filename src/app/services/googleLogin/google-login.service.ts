@@ -10,10 +10,18 @@ import { Router } from '@angular/router';
 })
 export class GoogleLoginService {
 
+
+  //llama al servicio AngularFireAuth y lo guarda en la variable privada auth
+  //llama al servicio CookieService y lo guarda en la variable privada cookie
+  //llama al servicio Router y lo guarda en la variable privada router
   constructor(private auth:AngularFireAuth,private cookie:CookieService,private router:Router) { }
 
+
+  //crea la variable privada loged y la inicializa en false
   private loged=false
   
+
+  //realiza el login con google
   async loginWithGoogle(){
     let referenceProvider=new firebase.auth.GoogleAuthProvider();
     await this.auth.signInWithPopup(referenceProvider);
@@ -22,6 +30,7 @@ export class GoogleLoginService {
         await user?.getIdToken()
         .then(
           token=>{
+            //guarda el token en el servicio cookie
             this.loged=true
             this.cookie.set('idToken',this.loged.toString())
             this.router.navigateByUrl('admin')
@@ -38,6 +47,8 @@ export class GoogleLoginService {
     )
   }
 
+
+  //obtiene los usuarios
   getUser(){
     this.auth.authState.subscribe(
       async user=>{
@@ -47,6 +58,8 @@ export class GoogleLoginService {
     )
   }
 
+
+  //comprueba si el usuario ya se encuentra logueado
   isLoged(){
     if(this.cookie.get('idToken')==='true'){
       this.loged=true
@@ -54,6 +67,8 @@ export class GoogleLoginService {
     return this.loged
   }
 
+
+  //desloguea al usuario y borra el token del servicio cookie
   logOut(){
     this.auth.signOut().then(
       ()=>{
@@ -64,5 +79,5 @@ export class GoogleLoginService {
     this.loged=false
     return this.loged
   }
-
 }
+

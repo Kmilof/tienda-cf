@@ -7,15 +7,25 @@ import { deleteObject, getDownloadURL, getStorage, ref, UploadResult, uploadStri
 })
 export class StorageService {
 
+
+  //crea la variable privada response de tipo UploadResult
   private response:UploadResult;
 
+
+  //crea la variable privada storage y le asigna getStorage()
   private storage=getStorage();
+
 
   constructor() { }
 
+
+  //toma como parametros una variable name de tipo string
+  //toma como parametros una variable image de tipo any
   async uploadImage(name:string,image:any){
     try{
+      //crea una referencia de la imagen
       let referenceImage=ref(this.storage,'Products/'+name);
+      //sube la imagen a la base de datos
       this.response=await uploadString(referenceImage,image,'data_url')
       .then(resp=>{
         return resp
@@ -28,10 +38,14 @@ export class StorageService {
     }
   }
   
+
+  //toma la variable response de uploadImage y retorna su referencia
   obtainImage(response:UploadResult){
     return getDownloadURL(response.ref);
   }
 
+
+  //toma como parametro la imagen ingresada y la borra de la base de datos
   deleteImage(image:string){
     let reference=ref(this.storage,image);
     deleteObject(reference).then(answer=>{
@@ -41,8 +55,5 @@ export class StorageService {
       alert('Error: '+error);
     })
   }
-  
-
-
-
 }
+

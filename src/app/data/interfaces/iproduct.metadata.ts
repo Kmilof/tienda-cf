@@ -1,3 +1,6 @@
+
+
+//modelo de producto
 export interface Product{
     id:string;
     image: string;
@@ -10,3 +13,4 @@ export interface Product{
     pant: boolean;
     shoe: boolean;
 }
+

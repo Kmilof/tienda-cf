@@ -9,18 +9,23 @@ import { Product } from 'src/app/data/interfaces/iproduct.metadata';
 })
 export class GetProductsService{
 
+
     //declarar la variable privada productsCollection de tipo Product
     private productsCollection: AngularFirestoreCollection<Product>
 
+
     //llama a la base de datos y guarda la coleccion de products en la variable productsCollection
     constructor(private db:AngularFirestore){
+        //guarda en la variable productsCollection la colección 'products' que retorna la función de firestore
         this.productsCollection=db.collection('products');
     }
+
 
     //recorre la coleccion de productos y la retorna
     getProducts(){
         return this.productsCollection.snapshotChanges().pipe(map(action=>action.map(a=>a.payload.doc.data())));
     }
+
 
     //toma como parametro una variable de tipo Product y retorna una promesa
     createProduct(newProduct:Product,url:string){
@@ -39,6 +44,7 @@ export class GetProductsService{
         })
     }
 
+
     //toma como parametro una variable de tipo string (id del producto deseado) y retorna una promesa
     deleteProduct(idProduct:string){
         return new Promise(async(resolve,reject)=>{
@@ -54,6 +60,7 @@ export class GetProductsService{
         })
     }
 
+
     //toma como parametro una variable de tipo string del producto deseado
     //toma como parametro una variable de tipo Product
     //retorna una promesa
@@ -62,8 +69,5 @@ export class GetProductsService{
         //el Product ingresado como parametro
         return this.productsCollection.doc(idProduct).update(newDates);
     }
-
-
 }
-
 
